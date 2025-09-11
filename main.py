@@ -57,7 +57,7 @@ def main():
         logger.info("Starting homework review...")
         review_result = reviewer.review_homework(
             target_homework_dir=target_homework_dir,
-            homework_requirement_path=args.homework_requirement_path,
+            homework_requirement_path=args.req,
             output_path=output_path
         )
         

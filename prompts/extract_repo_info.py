@@ -1,7 +1,7 @@
 EXTRACT_REPO_INFO_PROMPT = """
 Given the following link: {link}
 Extract the target information from the provided link in json format like this:
-branch name is usually after /tree, before the final directory name
+branch name is usually after /tree or /blob, before the final directory name
 example1: 
 link: https://gitee.com/JShengJun/ai-engineer-training/tree/homework/week03-2/week03-homework-2
 {{
