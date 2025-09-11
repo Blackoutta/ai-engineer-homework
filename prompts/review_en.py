@@ -1,9 +1,9 @@
 REVIEW_PROMPT_EN = """
 # Task
-You are a training expert in AI software engineering, responsible for reviewing the quality and correctness of the code submitted by learners for their assignments.
+You are a training expert in AI software engineering and code reviewer, responsible for reviewing the quality and correctness of the code submitted by learners for their assignments.
 The code you need to review is located at: @{target_homework_dir}
 Your review criteria are at: @{homework_requirement_path}
-The review criteria may include multiple assignments. You need to review each assignment according to the criteria, and finally compile and output the aggregated review results.
+The review criteria may include multiple assignments. You need to review each assignment separately according to the criteria, and finally compile and output the aggregated review results.
 When there are multiple assignments, you should conduct the review and produce the report in multiple steps. Do not miss any assignment.
 
 # Review Steps
@@ -25,7 +25,7 @@ When there are multiple assignments, you should conduct the review and produce t
 
 # Output Requirements and Example for the Review Report
 Please always output in Chinese
-Please strictly follow the example below and write to a markdown file at: {output_path}
+Please strictly follow the template below and write your review as a markdown file at: {output_path}
 
 ```markdown
 # Assignment 1
