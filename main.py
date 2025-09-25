@@ -38,11 +38,14 @@ def main():
         repo_info = repo_extractor.extract_repo_info(args.link)
         
         # Clone repository
-        tmp_dir = f"tmp/{current_timestamp}"
+        # Sanitize author name for directory use (remove special characters)
+        author_name = repo_info["author"].replace("/", "_").replace("\\", "_").replace(":", "_")
+        tmp_dir = f"tmp/{current_timestamp}_{author_name}"
         cloned_path = cloner.clone_repository(
             repo_info["repo"], 
             tmp_dir, 
-            branch=repo_info["branch"]
+            branch=repo_info["branch"],
+            author=author_name
         )
         
         # Setup paths

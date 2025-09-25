@@ -21,7 +21,8 @@ class RepoExtractor:
             self.logger.info(
                 f"Parsed repo info -> repo: {repo_info['repo']}, "
                 f"branch: {repo_info['branch']}, "
-                f"user_homework_dir: {repo_info['user_homework_dir']}"
+                f"user_homework_dir: {repo_info['user_homework_dir']}, "
+                f"author: {repo_info['author']}"
             )
             
             return repo_info
@@ -84,6 +85,7 @@ class RepoExtractor:
             or data.get("dir")
             or data.get("path")
         )
+        author = data.get("author")
 
         if not repo_url:
             raise ValueError("Missing 'repo_url' or equivalent key in parsed data")
@@ -97,9 +99,12 @@ class RepoExtractor:
             raise ValueError("Missing 'branch' in parsed data")
         if not user_homework_dir:
             raise ValueError("Missing 'user_homework_dir' in parsed data")
+        if not author:
+            raise ValueError("Missing 'author' in parsed data")
 
         return {
             "repo": repo,
             "branch": branch,
             "user_homework_dir": user_homework_dir,
+            "author": author,
         }

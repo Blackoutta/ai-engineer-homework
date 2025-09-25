@@ -9,7 +9,7 @@ class GitCloner:
     def __init__(self, logger: Optional[logging.Logger] = None):
         self.logger = logger or logging.getLogger(__name__)
         
-    def clone_repository(self, repo_url: str, target_dir: str, branch: Optional[str] = None) -> str:
+    def clone_repository(self, repo_url: str, target_dir: str, branch: Optional[str] = None, author: Optional[str] = None) -> str:
         if not repo_url:
             raise ValueError("Repository URL cannot be empty")
         
@@ -32,7 +32,10 @@ class GitCloner:
         if branch:
             cmd.extend(['--branch', branch])
         
-        self.logger.info(f"Cloning repository {repo_url} to {target_dir}")
+        log_message = f"Cloning repository {repo_url} to {target_dir}"
+        if author:
+            log_message += f" (author: {author})"
+        self.logger.info(log_message)
         try:
             result = subprocess.run(cmd, capture_output=True, text=True, check=True)
         except subprocess.CalledProcessError as e:

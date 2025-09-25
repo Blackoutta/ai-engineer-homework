@@ -219,3 +219,4 @@ __marimo__/
 ## ignore all contents, including git repositories in ./tmp
 tmp/**
 tmp/
+homework_links.txt
