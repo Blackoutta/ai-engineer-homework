@@ -79,12 +79,8 @@ class RepoExtractor:
             or data.get("url")
         )
         branch = data.get("branch") or data.get("ref") or data.get("default_branch")
-        user_homework_dir = (
-            data.get("user_homework_dir")
-            or data.get("homework_dir")
-            or data.get("dir")
-            or data.get("path")
-        )
+        user_homework_dir = data.get("user_homework_dir", ".")
+        
         author = data.get("author")
 
         if not repo_url:
@@ -98,7 +94,7 @@ class RepoExtractor:
         if not branch:
             raise ValueError("Missing 'branch' in parsed data")
         if not user_homework_dir:
-            raise ValueError("Missing 'user_homework_dir' in parsed data")
+            user_homework_dir = "."
         if not author:
             raise ValueError("Missing 'author' in parsed data")
 
